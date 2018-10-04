@@ -24,7 +24,6 @@ checkForEmailPage();
 function doEverything() {
     var suggestButtons = document.getElementsByClassName('bra');
     var suggestedText = Array.prototype.map.call(suggestButtons, function(x) { return x.innerHTML; });
-    console.log(suggestedText);
     var alternateText = suggestedText.map(function(x) {
         /* logic */
         if (x === "Sounds like a plan!") {
@@ -135,18 +134,18 @@ function doEverything() {
         suggestButtons[i].setAttribute('aria-label', 'Suggested reply, ' + alternateText[i]);
     };
 
-    function pollForReplyBox(i) {
+    function checkForReplyBox(i) {
         var replyBox = document.querySelector('div[aria-label="Message Body"]');
         if (replyBox) {
-            replyBox.innerHTML = alternateText[i] + '&nbsp;<br>';
             var discardButton = document.querySelector('div[aria-label="Discard draft"]');
             discardButton.addEventListener('click', checkForSuggestButtons);
+            replyBox.innerHTML = alternateText[i] + '&nbsp;<br>';
         } else {
-            setTimeout(pollForReplyBox.bind(null, i), 100);
+            setTimeout(checkForReplyBox.bind(null, i), 100);
         }
     }
 
     for (var i = 0; i < suggestButtons.length; i++) {
-        suggestButtons[i].addEventListener('click', pollForReplyBox.bind(null, i));
+        suggestButtons[i].addEventListener('click', checkForReplyBox.bind(null, i));
     }
 }
