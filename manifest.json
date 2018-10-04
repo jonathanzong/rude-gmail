@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "Rude Gmail Smart Reply",
+    "description": "Gmail smart reply but without the pleasantness",
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://mail.google.com/*"
+            ],
+            "include_globs" :   ["*#inbox*"],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}
