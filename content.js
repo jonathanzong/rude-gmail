@@ -123,7 +123,7 @@ function doEverything() {
             return "I'm busy, go away!"
         }
 
-        var fallbacks = ['Fuck off!', 'You suck.', 'Whatever, loser.', 'Delete your account.', 'k', 'Stop emailing me.', 'Go away.', '🖕', '👎'];
+        var fallbacks = ['Fuck off!', 'Fuck off.', 'Hard pass.', 'Yawn.', 'Eat shit.', 'You suck.', 'Whatever, loser.', 'Delete your account.', 'k', 'Stop emailing me.', 'Go away.', '🖕', '👎'];
 
         return fallbacks[Math.floor(Math.random() * fallbacks.length)];
     });
